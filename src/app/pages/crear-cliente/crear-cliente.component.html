@@ -1,0 +1,85 @@
+<div class="theme-wrapper">
+    <div class="container mt-4">
+      <h2 class="mb-4">Registrar Cliente</h2>
+  
+      <form [formGroup]="form" (ngSubmit)="crearCliente()">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            formControlName="nombre" 
+            class="form-control"
+            [ngClass]="{ 'is-invalid': hasErrors('nombre', 'required') }"
+          />
+          @if (hasErrors('nombre', 'required')) {
+            <div class="text-danger">Este campo es obligatorio</div>
+          }
+        </div>
+        
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input
+              type="text"
+              id="apellido"
+              formControlName="apellido" 
+              class="form-control"
+              [ngClass]="{ 'is-invalid': hasErrors('apellido', 'required') }"
+            />
+            @if (hasErrors('apellido', 'required')) {
+              <div class="text-danger">Este campo es obligatorio</div>
+            }
+          </div>
+          <div class="mb-3">
+            <label for="cedula" class="form-label">Cedula</label>
+            <input
+              type="text"
+              id="cedula"
+              formControlName="cedula" 
+              class="form-control"
+              [ngClass]="{ 'is-invalid': hasErrors('cedula', 'required') }"
+            />
+            @if (hasErrors('cedula', 'required')) {
+              <div class="text-danger">Este campo es obligatorio</div>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label for="telefono" class="form-label">telefono</label>
+            <input
+              type="text"
+              id="telefono"
+              formControlName="telefono" 
+              class="form-control"
+              [ngClass]="{ 'is-invalid': hasErrors('telefono', 'required') }"
+            />
+            @if (hasErrors('telefono', 'required')) {
+              <div class="text-danger">Este campo es obligatorio</div>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              placeholder="nombre@domain.com"
+              id="email"
+              formControlName="email" 
+              class="form-control"
+              [ngClass]="{ 'is-invalid': hasErrors('email', 'required') || hasErrors('email', 'email') }"
+            />
+            @if (hasErrors('email', 'required')) {
+              <div class="text-danger">Este campo es obligatorio</div>
+            }
+            @if(hasErrors('email', 'email')){
+                <span class="text-danger">Formato de email invalido</span>
+              }
+          </div>
+        
+  
+        
+  
+        <button type="submit" class="btn btn-primary w-100">Registrar Cliente</button>
+      </form>
+    </div>
+  </div>

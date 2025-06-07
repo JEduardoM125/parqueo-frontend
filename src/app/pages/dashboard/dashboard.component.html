@@ -1,0 +1,74 @@
+<div class="d-flex flex-row w-100 h-100 overflow-hidden">
+  <!-- Sidebar -->
+  <!--<div class="d-flex flex-column" style="width: 240px; background-color: #2b2b2b;">-->
+
+    <div class="d-flex flex-column sidebar" style="width: 500px;">
+
+    <!-- Logo/Header -->
+    <div class="d-flex align-items-center justify-content-center" style="height: 80px; ">
+      <span class="fw-bold fs-4 me-2">ParkingCR</span>
+      <img src="/image.jpg" alt="Logo" class="ms-3" style="height: 50px;">
+    </div>
+
+    <!-- Sidebar Menu -->
+    <div class="p-3 flex-grow-1 overflow-auto">
+      <h5 class=" text-center mb-4">Menú</h5>
+      <ul class="nav flex-column gap-3">
+        <li class="nav-item">
+          <a class="nav-link  rounded sidebar-item" role="button" (click)="goTo('inicio')">
+            <i class="bi bi-house-door me-2"></i> Inicio
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  rounded sidebar-item" role="button" (click)="goTo('parqueos')">
+            <i class="bi bi-car-front me-2"></i> Parqueos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  rounded sidebar-item" role="button" (click)="goTo('tiquetes')">
+            <i class="bi bi-ticket-perforated me-2"></i> Tiquetes
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link  rounded sidebar-item" role="button" (click)="goTo('clientes')">
+            <i class="bi bi-people me-2"></i> Clientes
+          </a>
+        </li>
+
+        <!-- Opciones solo para Admin -->
+        @if (currentRole === 'admin') {
+        <li class="nav-item">
+          <a class="nav-link  rounded sidebar-item" role="button" (click)="goTo('reporte-tiquetes')">
+            <i class="bi bi-clipboard-data me-2"></i> Reporte Tiquetes
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link  rounded sidebar-item" role="button" (click)="goTo('analytics')">
+            <i class="bi bi-bar-chart-line me-2"></i> Graficos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  rounded sidebar-item" role="button" (click)="goTo('register-admin')">
+            <i class="bi bi-person-plus me-2"></i> Registrar Admin
+            
+          </a>
+        </li>
+      }
+      </ul>
+
+      <hr class="border-light" />
+
+      <!-- Botones -->
+      <button class="btn btn-outline-danger w-100 mb-2" (click)="logoutSession()">
+        <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+      </button>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="flex-grow-1 p-4 dashboard-content overflow-auto">
+    <router-outlet></router-outlet>
+  </div>
+</div>

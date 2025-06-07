@@ -1,0 +1,79 @@
+<div class="theme-wrapper">
+    <div class="container mt-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Lista de Tiquetes</h2>
+            <!-- Barra de búsqueda para placa -->
+      
+
+            <button class="btn btn-primary" (click)="goTo('tiquetes/crear')">Crear Tiquete</button>
+          </div>
+
+         <div>
+          <input class="form-control" [(ngModel)]="searchPlate" placeholder="Buscar por placa" />
+         </div>
+            
+         
+        
+         
+   
+           
+
+      <table class="table table-striped table-bordered table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Placa</th>
+            <th>Hora Entrada</th>
+            <th>Hora Salida</th>
+            <th>Costo</th>
+            <th>Parqueo</th>
+            <th>Estado</th>
+            <th>Cliente ID</th>
+            <th>Acciones</th> <!-- Nueva columna -->
+
+          </tr>
+        </thead>
+        <tbody>
+         @for (tiquete of tiqueteList; track tiquete.id)  {
+            <tr
+            >
+              <th scope="row">{{ tiquete.id }}</th>
+              <td [ngClass]="{'bg-warning': isMatchingPlate(tiquete.placaVehiculo)}">{{ tiquete.placaVehiculo }}</td>
+              <td>{{ tiquete.horaEntrada | date:'short' }}</td>
+              <td>{{ tiquete.horaSalida ? (tiquete.horaSalida | date:'short') : 'En parqueo' }}</td>
+              <td>
+                {{ tiquete.costo !== null ? ('₡' + tiquete.costo.toFixed(2)) : 'Sin calcular' }}
+              </td>
+              <td>{{ obtenerNombreParqueo(tiquete.parqueoId) }}</td>
+              <td>
+                <span class="badge bg-{{ tiquete.cerrado ? 'success' : 'warning' }}">
+                  {{ tiquete.cerrado ? 'Cerrado' : 'Abierto' }}
+                </span>
+              </td>
+              <td>{{ tiquete.clienteId }}</td>
+
+                  <!-- Botón Editar -->
+              <button class="btn btn-sm btn-info me-2" 
+              [ngClass]="{'disabled': tiquete.cerrado}" 
+              (click)="goTo('tiquetes/editar/' + tiquete.id)">
+        Editar
+      </button>
+
+      <!-- Botón Cerrar -->
+      <button class="btn btn-sm btn-danger" 
+              [ngClass]="{'disabled': tiquete.cerrado}" 
+              (click)="goTo('tiquetes/cerrar/' + tiquete.id)">
+        Cerrar
+      </button>
+
+
+
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  

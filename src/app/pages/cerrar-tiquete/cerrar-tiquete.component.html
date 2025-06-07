@@ -1,0 +1,56 @@
+<div class="theme-wrapper">
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div *ngIf="resumen; else cargando" class="card shadow-sm border-0">
+              <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Resumen de Cierre de Tiquete</h4>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <strong>Placa:</strong> {{ resumen.placaVehiculo }}
+                </div>
+                <div class="mb-3">
+                  <strong>Hora de Entrada:</strong>
+                  {{ resumen.horaEntrada | date: 'short' }}
+                </div>
+                <div class="mb-3">
+                  <strong>Hora Estimada de Salida:</strong>
+                  {{ resumen.horaSalidaEstimada | date: 'short' }}
+                </div>
+                <div class="mb-3">
+                  <strong>Tiempo Total Estacionado:</strong>
+                  {{ resumen.tiempoTotalMinutos }} minutos
+                </div>
+                <div class="mb-3">
+                  <strong>Costo Estimado:</strong>
+                  <span class="text-success">₡{{ resumen.costoEstimado }}</span>
+                </div>
+                <div class="mb-3">
+                  <strong>Parqueo:</strong>
+                  {{ resumen.parqueo }}
+                </div>
+              </div>
+              <div class="card-footer text-end">
+                <button class="btn btn-secondary me-2" (click)="goTo()">
+                  Cancelar
+                </button>
+                <button class="btn btn-success" (click)="confirmarCierre()">
+                  Confirmar Cierre
+                </button>
+              </div>
+            </div>
+      
+            <ng-template #cargando>
+              <div class="alert alert-info text-center mt-3">Cargando resumen del tiquete...</div>
+            </ng-template>
+      
+            <div *ngIf="error" class="alert alert-danger mt-3">
+              {{ error }}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</div>

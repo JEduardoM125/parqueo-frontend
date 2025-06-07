@@ -1,0 +1,91 @@
+<div class="theme-wrapper">
+  <div class="mb-4">
+    <h2 class="fw-bold">¡Bienvenido, {{ usuario }}!</h2>
+    <p class="text-muted">Hoy es {{ fechaActual | date:'fullDate' }}.</p>
+  </div>
+
+  <!-- Tarjetas de resumen -->
+  <div class="custom-row mb-4">
+    <div class="card-col-3">
+      <div class="card summary-card shadow-sm bg-light text-center">
+        <div class="card-body">
+          <i class="bi bi-car-front-fill icon-large text-primary"></i>
+          <h5 class="mt-2">Espacios disponibles</h5>
+          <h2>{{ totalEspaciosDisponibles }}</h2>
+          <!-- Espacios adicionales en Cartago y Heredia 
+          <div class="mt-2 text-muted">
+            <p><small>Cartago: {{ totalEspaciosCartago }}</small></p>
+            <p><small>Heredia: {{ totalEspaciosHeredia }}</small></p>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="card-col-3">
+      <div class="card summary-card shadow-sm bg-light text-center">
+        <div class="card-body">
+          <i class="bi bi-ticket-perforated-fill icon-large text-success"></i>
+          <h5 class="mt-2">Tiquetes activos</h5>
+          <h2>{{ tiquetesActivos }}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-col-3">
+      <div class="card summary-card shadow-sm bg-light text-center">
+        <div class="card-body">
+          <i class="bi bi-clipboard-data-fill icon-large text-warning"></i>
+          <h5 class="mt-2">Clientes con Tiquete: {{ fechaActual | date:'fullDate' }}</h5>
+          <h2>{{ totalClientesDelDia }}</h2>
+        </div>
+      </div>
+    </div>
+
+<!-- Tarjeta para Tiquetes Cerrados -->
+<div class="card-col-3">
+  <div class="card summary-card shadow-sm bg-light text-center">
+    <div class="card-body">
+      <i class="bi bi-ticket-perforated-fill icon-large text-danger"></i>
+      <h5 class="mt-2">Tiquetes cerrados</h5>
+      <h2>{{ tiquetesCerrados }}</h2>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  </div>
+
+  <!-- Accesos rápidos -->
+<!-- Accesos rápidos -->
+<div class="row g-4 mt-4">
+  <div class="col-md-6">
+    <div class="card option-card text-center shadow h-100" (click)="goTo('parqueos')">
+      <div class="card-body d-flex flex-column align-items-center justify-content-center">
+        <div class="icon-container mb-3">
+          <i class="bi bi-car-front-fill icon-big"></i>
+        </div>
+        <h5 class="card-title">Ir a Parqueos</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card option-card text-center shadow h-100" (click)="goTo('tiquetes')">
+      <div class="card-body d-flex flex-column align-items-center justify-content-center">
+        <div class="icon-container mb-3">
+          <i class="bi bi-ticket-perforated-fill icon-big"></i>
+        </div>
+        <h5 class="card-title">Ir a Tiquetes</h5>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+  
+</div>

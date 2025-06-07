@@ -1,0 +1,77 @@
+<div class="theme-wrapper">
+    <div class="container mt-4">
+      <h2 class="mb-4">Crear Tiquete</h2>
+  
+      <form [formGroup]="form" (ngSubmit)="crearTiquete()">
+        <div class="mb-3">
+          <label for="placaVehiculo" class="form-label">Placa del Vehículo</label>
+          <input
+            type="text"
+            id="placaVehiculo"
+            formControlName="placaVehiculo" 
+            class="form-control"
+            [ngClass]="{ 'is-invalid': hasErrors('placaVehiculo', 'required') }"
+          />
+          @if (hasErrors('placaVehiculo', 'required')) {
+            <div class="text-danger">Este campo es obligatorio</div>
+          }
+        </div>
+  
+        <div class="mb-3">
+          <label for="clienteId" class="form-label">ID Cliente</label>
+          <input
+            type="number"
+            id="clienteId"
+            formControlName="clienteId"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': hasErrors('clienteId', 'required') }"
+          />
+          @if (hasErrors('clienteId', 'required')) {
+            <div class="text-danger">Este campo es obligatorio</div>
+          }
+        </div>
+  
+        <div class="mb-3">
+          <label for="parqueoId" class="form-label">Parqueo</label>
+          <select
+            formControlName="parqueoId"
+            class="form-select"
+            [ngClass]="{ 'is-invalid': hasErrors('parqueoId', 'required') }"
+          >
+            <option value="" disabled selected>Seleccione un parqueo</option>
+            <option *ngFor="let parqueo of parqueoList" [value]="parqueo.id">
+              {{ parqueo.nombre }}
+            </option>
+          </select>
+          @if (hasErrors('parqueoId', 'required')) {
+            <div class="text-danger">Debe seleccionar un parqueo</div>
+          }
+        </div>
+  
+        <div class="mb-3">
+          <label for="horaEntrada" class="form-label">Hora de Entrada</label>
+          <input
+            type="datetime-local"
+            id="horaEntrada"
+            formControlName="horaEntrada"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': hasErrors('horaEntrada', 'required') }"
+          />
+          @if (hasErrors('horaEntrada', 'required')) {
+            <div class="text-danger">Este campo es obligatorio</div>
+          }
+        </div>
+
+        <div class="card-footer text-end">
+          <button class="btn btn-secondary me-2" (click)="goTo()">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary ">Crear Tiquete</button>
+        </div>
+  
+        
+      
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,42 @@
+
+:host {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.dashboard-content {
+  height: 100%;
+  width: 100%;
+}
+ /* Sidebar */
+ .sidebar {
+  transition: all 0.3s ease;
+}
+
+[data-bs-theme="light"] .sidebar {
+  background-color: #fff;  /* Fondo blanco en el modo claro */
+  width: 300px;  /* Aumentamos el ancho en modo claro */
+}
+
+[data-bs-theme="dark"] .sidebar {
+  background-color: #2b2b2b;  /* Fondo oscuro en el modo oscuro */
+  width: 300px;  /* Mantener el tamaño pequeño en modo oscuro */
+}
+
+/* Logo/Header */
+.header {
+  background-color: #1c1c1c;
+  height: 80px;
+  color: white;
+}
+.sidebar-item {
+  color: #2470dc !important;
+}
+
+.sidebar-item:hover {
+  background-color: #3ecf8e; /* Verdecito claro */
+ 
+}
+
+

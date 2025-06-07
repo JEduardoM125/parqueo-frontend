@@ -1,0 +1,124 @@
+<div class="theme-wrapper">
+    <div class="container mt-4">
+      <h3><i class="bi bi-clipboard-data"></i> Reportes de Ventas</h3>
+  
+      <div class="mb-3">
+        <label for="tipo" class="form-label">Seleccionar reporte</label>
+        <select
+          class="form-select"
+          [ngModel]="tipoReporte()"
+          (ngModelChange)="tipoReporte.set($event)"
+        >
+          @for (t of tipos; track t.valor) {
+            <option [value]="t.valor">{{ t.texto }}</option>
+          }
+        </select>
+      </div>
+  
+      @if (tipoReporte() === 'mes' || tipoReporte() === 'parqueo') {
+        <div class="row">
+          <div class="col">
+            <label>Mes</label>
+            <select
+              class="form-select"
+              [ngModel]="mes()"
+              (ngModelChange)="mes.set($event)"
+            >
+              <option [ngValue]="null" disabled>-- Seleccione mes --</option>
+              @for (m of meses; track m.valor) {
+                <option [value]="m.valor">{{ m.nombre }}</option>
+              }
+            </select>
+          </div>
+          <div class="col">
+            <label>Año</label>
+            <select
+              class="form-select"
+              [ngModel]="anio()"
+              (ngModelChange)="anio.set($event)"
+            >
+              <option [ngValue]="null" disabled>-- Seleccione año --</option>
+              @for (a of anios; track a) {
+                <option [value]="a">{{ a }}</option>
+              }
+            </select>
+          </div>
+        </div>
+      }
+  
+       <!-- Filtro para seleccionar parqueo: mostrar select con nombre -->
+    @if (tipoReporte() === 'parqueo') {
+        <div class="mb-3 mt-2">
+          <label>Seleccione el Parqueo</label>
+          <select class="form-select"
+            [ngModel]="parqueoId()"
+            (ngModelChange)="parqueoId.set($event)">
+            <option [ngValue]="null" disabled>-- Seleccione --</option>
+            @for (p of parqueoList(); track p.id) {
+              <option [value]="p.id">{{ p.nombre }}</option>
+            }
+          </select>
+        </div>
+      }
+  
+  
+      @if (tipoReporte() === 'rango') {
+        <div class="row">
+          <div class="col">
+            <label>Fecha inicio</label>
+            <input
+              type="date"
+              class="form-control"
+              [ngModel]="startDate()"
+              (ngModelChange)="startDate.set($event)"
+            />
+          </div>
+          <div class="col">
+            <label>Fecha fin</label>
+            <input
+              type="date"
+              class="form-control"
+              [ngModel]="endDate()"
+              (ngModelChange)="endDate.set($event)"
+            />
+          </div>
+        </div>
+      }
+  
+      <button
+        class="btn btn-primary mt-3"
+        (click)="obtenerReporte()"
+        [disabled]="cargando()"
+      >
+        <i class="bi bi-search"></i> Consultar
+      </button>
+  
+      <hr />
+  
+      @if (reportes().length > 0) {
+        <h5>Resultados</h5>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Tiquete ID</th>
+              <th>Fecha Creación</th>
+              <th>Monto</th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            @for (r of reportes(); track r.id) {
+              <tr>
+                <td>{{ r.tiqueteId }}</td>
+                <td>{{ r.fechaReporte | date:'medium' }}</td>
+                <td>{{ r.monto | colonCurrency }}</td>
+                
+            }
+          </tbody>
+        </table>
+      } @else {
+        <p class="text-muted">No hay datos para mostrar.</p>
+      }
+    </div>
+  </div>
+  

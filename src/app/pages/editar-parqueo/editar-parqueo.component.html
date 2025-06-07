@@ -1,0 +1,111 @@
+<div class="theme-wrapper">
+    <div class="container mt-4">
+        <h2 class="mb-4">Editar Parqueo</h2>
+    
+        <form [formGroup]="form" (ngSubmit)="editarParqueo()">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre del parqueo</label>
+            <input
+              type="text"
+              id="nombre"
+              formControlName="nombre" 
+              class="form-control"
+              [ngClass]="{ 'is-invalid': hasErrors('nombre', 'required') }"
+            />
+            @if (hasErrors('nombre', 'required')) {
+              <div class="text-danger">Este campo es obligatorio</div>
+            }
+          </div>
+    
+          <div class="mb-3">
+            <label for="cantidadMaximaVehiculos" class="form-label">Cantidad Maxima de Vehiculos</label>
+            <input
+              type="number"
+              id="cantidadMaximaVehiculos"
+              formControlName="cantidadMaximaVehiculos"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': hasErrors('cantidadMaximaVehiculos', 'required') }"
+            />
+            @if (hasErrors('cantidadMaximaVehiculos', 'required')) {
+              <div class="text-danger">Este campo es obligatorio</div>
+            }
+          </div>
+    
+          <div class="mb-3">
+            <label for="horaApertura" class="form-label">Hora de Apertura</label>
+            <input
+              type="time"
+              id="horaApertura"
+              formControlName="horaApertura"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': hasErrors('horaApertura', 'required') }"
+            />
+            @if (hasErrors('horaApertura', 'required')) {
+              <div class="text-danger">Este campo es obligatorio</div>
+            }
+          </div>
+  
+          <div class="mb-3">
+              <label for="horaCierre" class="form-label">Hora de Cierre</label>
+              <input
+                type="time"
+                id="horaCierre"
+                formControlName="horaCierre"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': hasErrors('horaCierre', 'required') }"
+              />
+              @if (hasErrors('horaCierre', 'required')) {
+                <div class="text-danger">Este campo es obligatorio</div>
+              }
+            </div>
+  
+           
+  
+            <div class="mb-3">
+              <label for="tarifaPorHora" class="form-label">Tarifa Por Hora</label>
+              <div class="input-group">
+                <span class="input-group-text">₡</span>
+                <input
+                  type="number"
+                  id="tarifaPorHora"
+                  formControlName="tarifaPorHora"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': hasErrors('tarifaPorHora', 'required') }"
+                />
+              </div>
+              @if (hasErrors('tarifaPorHora', 'required')) {
+                <div class="text-danger">Este campo es obligatorio</div>
+              }
+            </div>
+  
+            <div class="mb-3">
+              <label for="tarifaPorMediaHora" class="form-label">Tarifa Por MediaHora</label>
+              <div class="input-group">
+                <span class="input-group-text">₡</span>
+                <input
+                  type="number"
+                  id="tarifaPorMediaHora"
+                  formControlName="tarifaPorMediaHora"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': hasErrors('tarifaPorMediaHora', 'required') }"
+                />
+              </div>
+              @if (hasErrors('tarifaPorMediaHora', 'required')) {
+                <div class="text-danger">Este campo es obligatorio</div>
+              }
+            </div>
+  
+          <div class="card-footer text-end">
+            <button class="btn btn-secondary me-2" (click)="goTo()">
+              Cancelar
+            </button>
+            <button type="submit" class="btn btn-primary ">Editar Parqueo</button>
+          </div>
+    
+          
+        
+        </form>
+      </div>
+
+   
+</div>

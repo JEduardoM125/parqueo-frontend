@@ -1,0 +1,42 @@
+<div class="theme-wrapper">
+    
+    <div class="container mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Lista de Tiquetes</h2>
+        <button class="btn btn-primary" (click)="goTo('clientes/crear')">Registrar Cliente</button>
+      </div>
+
+        <table class="table table-striped table-bordered table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+              <th>Cedula</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Email</th>
+              <th>Telefono</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (cliente of clienteList; track cliente.id){
+                <tr>
+                    <th scope="row">{{ cliente.id }}</th>
+                    <td>{{ cliente.cedula }}</td>
+                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.apellido }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>{{ cliente.telefono }}</td>
+                </tr>
+            }
+             
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+
+</div>
+

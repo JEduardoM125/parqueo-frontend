@@ -1,0 +1,128 @@
+/* 1. Fondo claro y oscuro general para body y app-root */
+body[data-bs-theme="light"],
+app-root[data-bs-theme="light"] {
+  background-color: #f8f9fa;
+  color: #000;
+}
+
+body[data-bs-theme="dark"],
+app-root[data-bs-theme="dark"] {
+  background-color: #121212;
+  color: #fff;
+}
+
+/* 2. Layout general sin márgenes, 100% altura */
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  /*overflow: hidden;*/
+}
+
+app-root {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+/* 2. Asegurar altura del wrapper principal */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+/* Sidebar y temas */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+[data-bs-theme="light"] .sidebar {
+  background-color: #fff;
+  color: #000000;
+}
+
+[data-bs-theme="dark"] .sidebar {
+  background-color: #2b2b2b;
+  color: #ffffff;
+}
+
+/* Ítems del sidebar */
+[data-bs-theme="light"] .sidebar-item {
+  color: #000;
+}
+
+[data-bs-theme="dark"] .sidebar-item {
+  color: #fff;
+}
+
+/* Tarjetas (cards) */
+[data-bs-theme="dark"] .card {
+  background-color: #1e1e1e !important;
+  color: #fff;
+}
+
+[data-bs-theme="light"] .card {
+  background-color: #fff !important;
+  color: #000;
+}
+
+/* Botón modo oscuro */
+.btn-dark-custom {
+  background-color: #4b0082;
+  color: white;
+  border: none;
+}
+
+.btn-dark-custom:hover {
+  background-color: #3b0068;
+  color: white;
+}
+
+/* Asegura altura mínima de pantalla */
+.theme-wrapper {
+  min-height: 100vh;
+}
+
+
+
+
+/* 3. Estilo para app-dashboard si aplica */
+/*app-dashboard {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+[data-bs-theme="light"] .sidebar {
+  background-color: #fff;
+  color: #000000;
+}
+
+[data-bs-theme="dark"] .sidebar {
+  background-color: #2b2b2b;
+  color: #ffffff;
+}
+
+[data-bs-theme="light"] .sidebar-item {
+  color: #000;
+}
+
+[data-bs-theme="dark"] .sidebar-item {
+  color: #fff;
+}*/
+
+/* 4. Estilo para cards en modo oscuro y claro */
+/*[data-bs-theme="dark"] .card {
+  background-color: #1e1e1e !important;
+  color: #fff;
+}
+
+[data-bs-theme="light"] .card {
+  background-color: #fff !important;
+  color: #000;
+}*/

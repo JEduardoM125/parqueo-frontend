@@ -1,0 +1,34 @@
+<div class="app-wrapper">
+
+    <!-- Sidebar Menu -->
+    <router-outlet></router-outlet>
+  
+    <!-- Botón de modo oscuro fijo -->
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle ">
+      <button class="btn btn-dark-custom py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (dark)">
+        <i class="bi" [ngClass]="currentTheme === 'dark' ? 'bi-moon-stars-fill' : 'bi-sun'"></i>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" (click)="setTheme('light')" aria-pressed="false">
+            <i class="bi bi-sun me-2 opacity-50" aria-hidden="true"></i>
+            Light
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" (click)="setTheme('dark')" aria-pressed="true">
+            <i class="bi bi-moon-stars-fill me-2 opacity-50" aria-hidden="true"></i>
+            Dark
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" (click)="setTheme('auto')" aria-pressed="false">
+            <i class="bi bi-circle-half me-2 opacity-50" aria-hidden="true"></i>
+            Auto
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

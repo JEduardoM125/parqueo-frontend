@@ -1,0 +1,43 @@
+<div class="theme-wrapper">
+    <div class="container mt-4">
+        <h2 class="mb-4 text-center">Listado de Parqueos</h2>
+        <button class="btn btn-success" (click)="goTo('parqueo/crear')">
+            <i class="bi bi-plus-circle"></i> Registrar Parqueo
+          </button>
+
+        <div class="row">
+            @for (parqueo of parqueoList; track parqueo.id) {
+          <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100 border-primary">
+              <div class="card-body">
+                <h5 class="card-title text-primary">
+                  <i class="bi bi-building"></i> {{ parqueo.nombre }}
+                </h5>
+                <ul class="list-unstyled">
+                  <li><i class="bi bi-car-front-fill text-secondary"></i> <strong>Capacidad:</strong> {{ parqueo.cantidadMaximaVehiculos }}</li>
+                  <li><i class="bi bi-clock-fill text-success"></i> <strong>Apertura:</strong> {{ parqueo.horaApertura }}</li>
+                  <li><i class="bi bi-clock-fill text-danger"></i> <strong>Cierre:</strong> {{ parqueo.horaCierre }}</li>
+                  <li><i class="bi bi-currency-dollar text-warning"></i> <strong>Tarifa hora:</strong> ₡{{ parqueo.tarifaPorHora }}</li>
+                  <li><i class="bi bi-currency-dollar text-info"></i> <strong>Tarifa media hora:</strong> ₡{{ parqueo.tarifaPorMediaHora }}</li>
+                </ul>
+
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary btn-sm" (click)="goTo('parqueo/editar/' + parqueo.id)">
+                      <i class="bi bi-pencil"></i> Editar
+                    </button>
+                    <button class="btn btn-danger btn-sm" (click)="eliminarParqueo(parqueo.id)">
+                      <i class="bi bi-trash"></i> Eliminar
+                    </button>
+              </div>
+
+            </div>
+          </div>
+        
+        </div>
+    }
+      </div>
+      
+
+</div>
+
+

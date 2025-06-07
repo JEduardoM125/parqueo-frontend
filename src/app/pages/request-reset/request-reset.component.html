@@ -1,0 +1,55 @@
+<div class="theme-wrapper">
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title text-center mb-4">Recuperar Contraseña</h2>
+              
+              @if (errorMessage()) {
+                <div class="alert alert-danger">{{ errorMessage() }}</div>
+              }
+  
+              @if (successMessage()) {
+                <div class="alert alert-success">{{ successMessage() }}</div>
+              }
+  
+              <form (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                  <label class="form-label">Correo Electrónico</label>
+                  <input 
+                    type="email" 
+                    class="form-control" 
+                    [ngModel]="email()"
+                    (ngModelChange)="email.set($event)"
+                    name="email"
+                    required
+                    placeholder="Ingresa tu correo registrado">
+                </div>
+  
+                <button 
+                  type="submit" 
+                  class="btn btn-primary w-100"
+                  [disabled]="isLoading()">
+                  @if (isLoading()) {
+                    <span class="spinner-border spinner-border-sm"></span>
+                  } @else {
+                    Enviar Token
+                  }
+                </button>
+              </form>
+  
+              <div class="text-center mt-3">
+                <button 
+                  type="button" 
+                  class="btn btn-link"
+                  (click)="navigateToLogin()">
+                  Volver al Login
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

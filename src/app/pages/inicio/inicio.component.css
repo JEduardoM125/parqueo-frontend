@@ -1,0 +1,73 @@
+
+.icon-large {
+  font-size: 3rem;
+}
+
+.icon-big {
+  font-size: 2.5rem;
+}
+
+/* Evita sobrescribir Bootstrap .row */
+.custom-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+/* Personaliza las tarjetas con 3 columnas */
+.card-col-3 {
+  flex: 1 1 calc(33.333% - 1rem);
+  max-width: calc(33.333% - 1rem);
+  padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .card-col-3 {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+/* Tarjetas de resumen */
+.summary-card {
+  border-radius: 1rem;
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.summary-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Tarjetas de opciones */
+.option-card {
+  border-radius: 1rem;
+  transition: transform 0.3s ease-in-out;
+  padding: 1rem;
+}
+
+.option-card:hover {
+  transform: scale(1.03);
+  background-color: #f0f8ff;
+  cursor: pointer;
+}
+
+/* Ícono rojo para tiquetes cerrados */
+.bi-ticket-perforated-fill.text-danger {
+  color: #dc3545;
+}
+
+/* Ajuste de padding en tarjetas */
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Texto adicional más pequeño */
+.text-muted small {
+  font-size: 0.8rem;
+}

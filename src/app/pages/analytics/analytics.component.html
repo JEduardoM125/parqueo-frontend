@@ -1,0 +1,155 @@
+<div class="container mt-4">
+  <h2 class="mb-4">
+    <i class="bi bi-bar-chart-line me-2"></i>Análisis de Ventas
+  </h2>
+
+   <!-- Filtros -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label class="form-label">Tipo de análisis</label>
+          <select class="form-select" 
+                  [ngModel]="tipoReporte()" 
+                  (ngModelChange)="tipoReporte.set($event)">
+            @for (t of tiposReporte; track t.valor) {
+              <option [value]="t.valor">{{ t.texto }}</option>
+            }
+          </select>
+        </div>
+
+        @if (tipoReporte() === 'mes' || tipoReporte() === 'parqueo') {
+          <div class="col-md-3">
+            <label class="form-label">Mes</label>
+            <select class="form-select"
+                    [ngModel]="mes()"
+                    (ngModelChange)="mes.set($event)">
+              @for (m of meses; track m.valor) {
+                <option [value]="m.valor">{{ m.nombre }}</option>
+              }
+            </select>
+          </div>
+          
+          <div class="col-md-3">
+            <label class="form-label">Año</label>
+            <select class="form-select"
+                    [ngModel]="anio()"
+                    (ngModelChange)="anio.set($event)">
+              @for (a of anios; track a) {
+                <option [value]="a">{{ a }}</option>
+              }
+            </select>
+          </div>
+        }
+
+        @if (tipoReporte() === 'parqueo') {
+          <div class="col-md-4">
+            <label class="form-label">Parqueo</label>
+            <select class="form-select"
+                    [ngModel]="parqueoId()"
+                    (ngModelChange)="parqueoId.set($event)">
+              <option [ngValue]="null">Todos los parqueos</option>
+              @for (p of parqueoList(); track p.id) {
+                <option [value]="p.id">{{ p.nombre }}</option>
+              }
+            </select>
+          </div>
+        }
+
+        @if (tipoReporte() === 'rango') {
+          <div class="col-md-3">
+            <label class="form-label">Fecha inicio</label>
+            <input type="date" 
+                   class="form-control"
+                   [ngModel]="startDate()"
+                   (ngModelChange)="startDate.set($event)">
+          </div>
+          
+          <div class="col-md-3">
+            <label class="form-label">Fecha fin</label>
+            <input type="date" 
+                   class="form-control"
+                   [ngModel]="endDate()"
+                   (ngModelChange)="endDate.set($event)">
+          </div>
+        }
+
+        <div class="col-md-2 d-flex align-items-end">
+          <button class="btn btn-primary w-100"
+                  (click)="obtenerDatos()"
+                  [disabled]="loading()">
+            @if (loading()) {
+              <span class="spinner-border spinner-border-sm me-2"></span>
+              Procesando...
+            } @else {
+              <i class="bi bi-graph-up me-2"></i>Analizar
+            }
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resultados -->
+  @if (chartData().length > 0) {
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h5 class="card-title mb-4">Visualización de Datos</h5>
+        
+        <div class="chart-container">
+          <canvas baseChart
+                  [type]="chartType()"
+                  [data]="{
+                    labels: chartLabels(),
+                    datasets: chartData()
+                  }"
+                  [options]="chartOptions">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title mb-4">Métricas Clave</h5>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card text-bg-primary mb-3">
+              <div class="card-body">
+                <h6 class="card-subtitle mb-2">Total Ventas</h6>
+                <p class="card-text display-6">{{ calcularTotalVentas() | currency:'CRC':'₡' }}</p>
+              </div>
+            </div>
+          </div>
+          
+          @if (tipoReporte() === 'dia') {
+            <div class="col-md-3">
+              <div class="card text-bg-success mb-3">
+                <div class="card-body">
+                  <h6 class="card-subtitle mb-2">Hora Pico</h6>
+                  <p class="card-text display-6">{{ obtenerHoraPico() }}</p>
+                </div>
+              </div>
+            </div>
+          }
+          
+          @if (tipoReporte() === 'mes' || tipoReporte() === 'rango') {
+            <div class="col-md-3">
+              <div class="card text-bg-info mb-3">
+                <div class="card-body">
+                  <h6 class="card-subtitle mb-2">Día con más ventas</h6>
+                  <p class="card-text display-6">{{ obtenerDiaMaxVentas() }}</p>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="alert alert-info">
+      <i class="bi bi-info-circle me-2"></i>
+      Seleccione los parámetros y haga clic en "Analizar" para generar reportes gráficos.
+    </div>
+  }
+</div>

@@ -1,0 +1,30 @@
+.chart-container {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+}
+
+.alert {
+  border-radius: 10px;
+}
+
+.form-select, .form-control {
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.btn-primary {
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: 500;
+}
+
+.display-6 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

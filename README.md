@@ -2,6 +2,26 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
 
+## Requisitos
+- Node.js 18+
+- Angular CLI
+
+## Configuración
+1. Renombrar `src/environments/environment.example.ts` a `environment.ts`
+2. Actualizar la URL de la API:
+   ```typescript
+   export const environment = {
+     apiUrl: 'http://localhost:5181/api'
+   };
+   ```
+
+## Instalación y ejecución
+```bash
+npm install
+ng serve
+```
+- Aplicación disponible en: `http://localhost:4200`
+
 ## Development server
 
 To start a local development server, run:
